@@ -2,42 +2,58 @@ var Vedot = function() {
   var self = this;
   self.kategoria = ko.observable({nimi: 'Kaikki', url: '/vedot'});
 
-  self.vedot = ko.observableArray([{
+
+  self.systeemit = ko.observableArray([{
+    panos: 3,
     booker: 'Veikkaus',
     pelimuoto: 'Pitkäveto',
-    panos: 2,
-    kerroin: 10.87,
     voitto: 0,
-    kohteet: [{
-      liiga: 'NFL',
-      ottelu: 'Broncos - Seattle',
-      tyyppi: '12',
-      kerroin: 2.4,
-      veikkaus: '1',
-      tulos: '19-21',
-      osuma: false
+    pvm: '22.3.2014',
+    vedot: [{
+      kerroin: 10.87,
+      panos: 3,
+      kohteet: [{
+        ottelu: 'Broncos-Seattle'
+      }]
     }]
   },
   {
+    panos: 2,
     booker: 'Nordicbet',
-    pelimuoto: 'Pitkäveto',
-    panos: 3,
-    kerroin: 3.3,
-    voitto: 9.9,
-    kohteet: [{
-      liiga: 'SM-Liiga',
-      ottelu: 'HIFK-Blues',
-      tyyppi: '1x2',
-      kerroin: 3.3,
-      veikkaus: '2',
-      tulos: '1-4',
-      osuma: true
-    }]
+    pelimuoto: 'Järjestelmä',
+    voitto: 0,
+    pvm: '22.3.2014',
+    vedot: [{
+      kerroin: 10.87,
+      panos: 3,
+      kohteet: [
+      {ottelu: 'A'},
+      {ottelu: 'B'}
+      ]
+    },
+    {
+      kerroin: 10.87,
+      panos: 3,
+      kohteet: [
+      {ottelu: 'A'},
+      {ottelu: 'C'}
+      ]
+    },
+    {
+      kerroin: 10.87,
+      panos: 3,
+      kohteet: [
+      {ottelu: 'B'},
+      {ottelu: 'C'}
+      ]
+    }
+    ]
   }]);
 
-  self.valittuVeto = ko.observable();
+  self.valittuSysteemi = ko.observable();
   self.valitseVeto = function(veto) {
-    self.valittuVeto(veto);
+    self.valittuSysteemi(veto);
+    console.log(self.valittuSysteemi());
   };
 
   // Kun kategoriaa vaihdetaan
