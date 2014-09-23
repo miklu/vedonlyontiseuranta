@@ -12,6 +12,17 @@ var Lomake = function() {
   self.valittuPelimuoto = ko.observable();
   self.isSelected = ko.observable(true);
 
+
+  self.systeemit = ko.observableArray([
+    {nimi: 'Singlet', panos: null},
+    {nimi: 'Tuplat', panos: null},
+    {nimi: 'Triot', panos: null},
+    {nimi: 'Kvintetit', panos: null},
+    {nimi: 'Kvartetit', panos: null},
+    {nimi: 'Sekstetit', panos: null},
+  ]);
+
+
   self.ottelu = ko.observable("Eka");
   self.kerroin = ko.observable(1.5);
   self.voitto = ko.observable(0);
@@ -40,7 +51,7 @@ var Lomake = function() {
 
     for(var i = 0; i < tuplat.length; i++) {
       var veto = {};
-      systeemi.panos += parseFloat(self.tuplat());
+      systeemi.panos += parseFloat(self.systeemit()[num-1].panos);
       veto.kohteet = [];
       var kerroin = 1;
       for(var j=0; j < tuplat[i].length; j++) {
@@ -54,16 +65,25 @@ var Lomake = function() {
       systeemi.vedot.push(veto);
     }
     self.tallennettavaVeto(systeemi);
-    self.lisatytKohteet([]);
     self.isSelected(true);
     console.log(systeemi);
   };
 
   self.tallenna = function() {
-    if(self.tuplat()) {
-      self.valittuPelimuoto('Järjestelmä');
-      self.luoSysteemi(2);
+    for(var i = 0; i < self.systeemit().length; i++) {
+      if(self.systeemit()[i].panos) {
+        self.luoSysteemi(i+1);
+      }
     }
+    self.lisatytKohteet([]);
+    // if(self.tuplat()) {
+    //   self.valittuPelimuoto('Järjestelmä');
+    //   self.luoSysteemi(2);
+    // }
+    // if(self.triot()) {
+    //   self.valittuPelimuoto('Järjestelmä');
+    //   self.luoSysteemi(3);
+    // }
   };
 
   self.lisaaKohde = function() {

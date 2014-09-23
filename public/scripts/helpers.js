@@ -33,3 +33,4 @@ function kombinaatiot(set, k) {
   }
   return combs;
 }
+
