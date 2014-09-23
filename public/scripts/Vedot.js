@@ -50,6 +50,10 @@ var Vedot = function() {
     ]
   }]);
 
+  tallennus.subscribe(function(newValue) {
+    self.systeemit.push(ko.toJS(newValue));
+  });
+
   self.valittuSysteemi = ko.observable();
   self.valitseVeto = function(veto) {
     self.valittuSysteemi(veto);
