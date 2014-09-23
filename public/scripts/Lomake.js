@@ -40,18 +40,26 @@ var Lomake = function() {
   });
 
 
-  self.luoSysteemi = function(num) {
+  // TODO: mahdollisesti kaikki järjestelmät samaan systeemiin
+  self.luoSysteemi = function(num, isSystem) {
     var systeemi = new Systeemi(self.valittuBooker(), self.valittuPelimuoto());
 
     var tuplat = kombinaatiot(ko.toJS(self.lisatytKohteet()), num);
 
     systeemi.vedot = [];
-    systeemi.panos = 0;
+    if(isSystem) {
+      systeemi.panos = 0;
+    }
+    else {
+      systeemi.panos = self.normaali();
+    }
     systeemi.voitto = 0;
 
     for(var i = 0; i < tuplat.length; i++) {
       var veto = {};
-      systeemi.panos += parseFloat(self.systeemit()[num-1].panos);
+      if(isSystem) {
+        systeemi.panos += parseFloat(self.systeemit()[num-1].panos);
+      }
       veto.kohteet = [];
       var kerroin = 1;
       for(var j=0; j < tuplat[i].length; j++) {
@@ -61,7 +69,12 @@ var Lomake = function() {
       }
       // Tässä määritellään vedon kerroin, kohteet sekä muut ominaisuudet
       veto.kerroin = kerroin;
-      veto.panos = parseFloat(self.systeemit()[num-1].panos);
+      if(isSystem) {
+        veto.panos = parseFloat(self.systeemit()[num-1].panos);
+      }
+      else {
+        veto.panos = systeemi.panos;
+      }
       systeemi.vedot.push(veto);
     }
     self.tallennettavaVeto(systeemi);
@@ -70,20 +83,16 @@ var Lomake = function() {
   };
 
   self.tallenna = function() {
+    if(self.normaali()) {
+      self.luoSysteemi(self.lisatytKohteet().length, false);
+    }
     for(var i = 0; i < self.systeemit().length; i++) {
       if(self.systeemit()[i].panos) {
         self.valittuPelimuoto('Järjestelmä');
-        self.luoSysteemi(i+1);
+        self.luoSysteemi(i+1, true);
       }
     }
     self.lisatytKohteet([]);
-    // if(self.tuplat()) {
-    //   self.luoSysteemi(2);
-    // }
-    // if(self.triot()) {
-    //   self.valittuPelimuoto('Järjestelmä');
-    //   self.luoSysteemi(3);
-    // }
   };
 
   self.lisaaKohde = function() {
