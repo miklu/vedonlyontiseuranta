@@ -29,45 +29,52 @@ var Lomake = function() {
   });
 
 
+  self.luoSysteemi = function(num) {
+    var systeemi = new Systeemi(self.valittuBooker(), self.valittuPelimuoto());
+
+    var tuplat = kombinaatiot(ko.toJS(self.lisatytKohteet()), num);
+
+    systeemi.vedot = [];
+    systeemi.panos = 0;
+    systeemi.voitto = 0;
+
+    for(var i = 0; i < tuplat.length; i++) {
+      var veto = {};
+      systeemi.panos += parseFloat(self.tuplat());
+      veto.kohteet = [];
+      var kerroin = 1;
+      for(var j=0; j < tuplat[i].length; j++) {
+        kerroin *= tuplat[i][j].kerroin;
+        // luodaan kohde
+        veto.kohteet.push({ottelu: tuplat[i][j].ottelu, kerroin: tuplat[i][j].kerroin});
+      }
+      // Tässä määritellään vedon kerroin, kohteet sekä muut ominaisuudet
+      veto.kerroin = kerroin;
+      veto.panos = parseFloat(self.tuplat());
+      systeemi.vedot.push(veto);
+    }
+    self.tallennettavaVeto(systeemi);
+    self.lisatytKohteet([]);
+    self.isSelected(true);
+    console.log(systeemi);
+  };
+
   self.tallenna = function() {
     if(self.tuplat()) {
-
-
-      var systeemi = new Systeemi(self.valittuBooker(), self.valittuPelimuoto());
-
-      var tuplat = kombinaatiot(ko.toJS(self.lisatytKohteet()), 2);
-
-      systeemi.vedot = [];
-      systeemi.panos = 0;
-      systeemi.voitto = 0;
-
-      for(var i = 0; i < tuplat.length; i++) {
-        var veto = {};
-        systeemi.panos += parseFloat(self.tuplat());
-        veto.kohteet = [];
-        var kerroin = 1;
-        for(var j=0; j < tuplat[i].length; j++) {
-          kerroin *= tuplat[i][j].kerroin;
-          // luodaan kohde
-          veto.kohteet.push({ottelu: tuplat[i][j].ottelu, kerroin: tuplat[i][j].kerroin});
-        }
-        // Tässä määritellään vedon kerroin, kohteet sekä muut ominaisuudet
-        veto.kerroin = kerroin;
-        veto.panos = parseFloat(self.tuplat());
-        systeemi.vedot.push(veto);
-      }
-      self.tallennettavaVeto(systeemi);
-      console.log(systeemi);
+      self.valittuPelimuoto('Järjestelmä');
+      self.luoSysteemi(2);
     }
   };
 
   self.lisaaKohde = function() {
     if(self.ottelu()) {
+      self.isSelected(false);
       self.lisatytKohteet.push({
         ottelu: self.ottelu(),
         kerroin: self.kerroin()
       });
       self.ottelu('');
+      self.isSelected(true);
     }
   };
 };
