@@ -1,7 +1,16 @@
+@sidebar-width: 180px;
+
 body {
   background: #f3f3f3;
   font-family: Lato, 'Open Sans';
   font-size: 14px;
+}
+
+.tac {
+  text-align: center;
+}
+.right {
+  float: right;
 }
 
 /***********************************************
@@ -11,13 +20,13 @@ body {
   padding-left: 0;
   transtion: all 0.5s ease;
   .toggled {
-    padding-left: 250px;
+    padding-left: @sidebar-width;
     #content-wrapper {
       position: absolute;
-      margin-right: -250px;
+      margin-right: -@sidebar-width;
     }
     #sidebar-wrapper {
-      width: 250px;
+      width: @sidebar-width;
     }
   }
 }
@@ -25,10 +34,10 @@ body {
 #sidebar-wrapper {
   z-index: 1000;
   position: fixed;
-  left: 250px;
+  left: @sidebar-width;
   width: 0px;
   height: 100%;
-  margin-left: -250px;
+  margin-left: -@sidebar-width;
   overflow-y: auto;
   background: #eee;
   transtion: all 0.5s ease;
@@ -41,7 +50,7 @@ body {
 
  @media(min-width:768px) {
   #wrapper {
-    padding-left: 250px;
+    padding-left: @sidebar-width;
   }
 
   #wrapper.toggled {
@@ -49,7 +58,7 @@ body {
   }
 
   #sidebar-wrapper {
-    width: 250px;
+    width: @sidebar-width;
   }
 
   #wrapper.toggled #sidebar-wrapper {
