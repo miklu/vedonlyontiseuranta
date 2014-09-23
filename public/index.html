@@ -43,9 +43,30 @@
         <div class="row">
           <div class="col-md-4">
             <h4>Viimeisimmät vedot</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>Booker</th>
+                  <th>Pelimuoto</th>
+                  <th>Panos</th>
+                  <th>Kerroin</th>
+                  <th>Voitto</th>
+                </tr>
+              </thead>
+              <tbody data-bind="foreach: Vedot.vedot">
+                <tr data-bind="click: $root.Vedot.valitseVeto">
+                  <td data-bind="text: booker"></td>
+                  <td data-bind="text: pelimuoto"></td>
+                  <td data-bind="text: panos"></td>
+                  <td data-bind="text: kerroin"></td>
+                  <td data-bind="text: voitto"></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3" data-bind="with: Vedot.valittuVeto">
             <h4>Vedon tiedot</h4>
+            <p>Booker: <span data-bind="text: booker"></span></p>
           </div>
           <div class="col-md-3">
             <h4>Lomake</h4>
