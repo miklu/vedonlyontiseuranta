@@ -3,6 +3,12 @@ body {
   font-family: Lato, 'Open Sans';
   font-size: 14px;
 }
+.tac {
+  text-align: center;
+}
+.right {
+  float: right;
+}
 /***********************************************
   WRAPPERS
 ***********************************************/
@@ -11,22 +17,22 @@ body {
   transtion: all 0.5s ease;
 }
 #wrapper .toggled {
-  padding-left: 250px;
+  padding-left: 180px;
 }
 #wrapper .toggled #content-wrapper {
   position: absolute;
-  margin-right: -250px;
+  margin-right: -180px;
 }
 #wrapper .toggled #sidebar-wrapper {
-  width: 250px;
+  width: 180px;
 }
 #sidebar-wrapper {
   z-index: 1000;
   position: fixed;
-  left: 250px;
+  left: 180px;
   width: 0px;
   height: 100%;
-  margin-left: -250px;
+  margin-left: -180px;
   overflow-y: auto;
   background: #eee;
   transtion: all 0.5s ease;
@@ -37,13 +43,13 @@ body {
 }
 @media (min-width: 768px) {
   #wrapper {
-    padding-left: 250px;
+    padding-left: 180px;
   }
   #wrapper.toggled {
     padding-left: 0;
   }
   #sidebar-wrapper {
-    width: 250px;
+    width: 180px;
   }
   #wrapper.toggled #sidebar-wrapper {
     width: 0;
@@ -61,4 +67,5 @@ body {
 ***********************************************/
 .sidebar-nav {
   list-style: none;
+  margin-top: 20px;
 }

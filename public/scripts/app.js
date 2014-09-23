@@ -4,6 +4,7 @@ var AppViewModel = function() {
   this.Navigaatio = new Navigaatio();
   this.Tilastot = new Tilastot();
   this.Vedot = new Vedot();
+  this.Lomake = new Lomake();
 };
 
 
