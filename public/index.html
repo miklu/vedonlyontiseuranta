@@ -16,7 +16,7 @@
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav" data-bind="foreach: Navigaatio.kategoriat">
         <li>
-          <a href="#" data-bind="text: nimi"></a>
+          <a href="#" data-bind="text: nimi, click: $root.Navigaatio.valitseKategoria"></a>
         </li>
       </ul>
     </div>
@@ -27,7 +27,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <h1>Title</h1>
+            <h2 data-bind="text: Navigaatio.valittuKategoria().nimi"></h2>
           </div>
         </div>
       </div>

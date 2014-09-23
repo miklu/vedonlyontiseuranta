@@ -1,7 +1,14 @@
 var Navigaatio = function() {
   var self = this;
-  // Sivupalkin otsikko
-  self.nimi = ko.observable('BetBuddy');
+
+  // Pitää kirjaa klikatusta linkistä
+  self.valittuKategoria = ko.observable();
+
+  // Kutsutaan kun linkkiä klikataan
+  self.valitseKategoria = function(category) {
+    self.valittuKategoria(category);
+  };
+
   // Sivupalkin linkit
   self.kategoriat = [{
     nimi: 'Kaikki',
@@ -17,4 +24,8 @@ var Navigaatio = function() {
     nimi: 'Moniveto',
     url: '/vedot/pelimuoto/moniveto'
   }];
+
+  // Oleutksena kaikki
+  self.valitseKategoria(self.kategoriat[0]);
+
 };
