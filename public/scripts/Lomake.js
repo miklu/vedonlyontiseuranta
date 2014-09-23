@@ -27,9 +27,6 @@ var Lomake = function() {
   self.kerroin = ko.observable(1.5);
   self.voitto = ko.observable(0);
 
-  self.normaali = ko.observable(2);
-  self.tuplat = ko.observable(2.5);
-  self.triot = ko.observable();
 
   self.lisatytKohteet = ko.observableArray([]);
 
@@ -41,25 +38,18 @@ var Lomake = function() {
 
 
   // TODO: mahdollisesti kaikki järjestelmät samaan systeemiin
-  self.luoSysteemi = function(num, isSystem) {
+  self.luoSysteemi = function(num) {
     var systeemi = new Systeemi(self.valittuBooker(), self.valittuPelimuoto());
 
     var tuplat = kombinaatiot(ko.toJS(self.lisatytKohteet()), num);
 
     systeemi.vedot = [];
-    if(isSystem) {
-      systeemi.panos = 0;
-    }
-    else {
-      systeemi.panos = self.normaali();
-    }
+    systeemi.panos = 0;
     systeemi.voitto = 0;
 
     for(var i = 0; i < tuplat.length; i++) {
       var veto = {};
-      if(isSystem) {
-        systeemi.panos += parseFloat(self.systeemit()[num-1].panos);
-      }
+      systeemi.panos += parseFloat(self.systeemit()[num-1].panos);
       veto.kohteet = [];
       var kerroin = 1;
       for(var j=0; j < tuplat[i].length; j++) {
@@ -69,12 +59,7 @@ var Lomake = function() {
       }
       // Tässä määritellään vedon kerroin, kohteet sekä muut ominaisuudet
       veto.kerroin = kerroin;
-      if(isSystem) {
-        veto.panos = parseFloat(self.systeemit()[num-1].panos);
-      }
-      else {
-        veto.panos = systeemi.panos;
-      }
+      veto.panos = parseFloat(self.systeemit()[num-1].panos);
       systeemi.vedot.push(veto);
     }
     self.tallennettavaVeto(systeemi);
@@ -83,9 +68,6 @@ var Lomake = function() {
   };
 
   self.tallenna = function() {
-    if(self.normaali()) {
-      self.luoSysteemi(self.lisatytKohteet().length, false);
-    }
     for(var i = 0; i < self.systeemit().length; i++) {
       if(self.systeemit()[i].panos) {
         self.valittuPelimuoto('Järjestelmä');
