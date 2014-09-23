@@ -61,7 +61,7 @@ var Lomake = function() {
       }
       // Tässä määritellään vedon kerroin, kohteet sekä muut ominaisuudet
       veto.kerroin = kerroin;
-      veto.panos = parseFloat(self.tuplat());
+      veto.panos = parseFloat(self.systeemit()[num-1].panos);
       systeemi.vedot.push(veto);
     }
     self.tallennettavaVeto(systeemi);
@@ -72,12 +72,12 @@ var Lomake = function() {
   self.tallenna = function() {
     for(var i = 0; i < self.systeemit().length; i++) {
       if(self.systeemit()[i].panos) {
+        self.valittuPelimuoto('Järjestelmä');
         self.luoSysteemi(i+1);
       }
     }
     self.lisatytKohteet([]);
     // if(self.tuplat()) {
-    //   self.valittuPelimuoto('Järjestelmä');
     //   self.luoSysteemi(2);
     // }
     // if(self.triot()) {
