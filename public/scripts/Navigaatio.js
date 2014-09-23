@@ -4,6 +4,11 @@ var Navigaatio = function() {
   // Pitää kirjaa klikatusta linkistä
   self.valittuKategoria = ko.observable();
 
+  // Kun kategoriaa muutetaan ilmoittaa siitä tilastoille
+  self.valittuKategoria.subscribe(function(newValue) {
+    shouter.notifySubscribers(newValue);
+  });
+
   // Kutsutaan kun linkkiä klikataan
   self.valitseKategoria = function(category) {
     self.valittuKategoria(category);
@@ -12,17 +17,17 @@ var Navigaatio = function() {
   // Sivupalkin linkit
   self.kategoriat = [{
     nimi: 'Kaikki',
-    url: '/vedot'
+    url: ''
   },
   {
     nimi: 'Pitkäveto',
-    url: '/vedot/pelimuoto/pitkäveto'
+    url: '/pelimuoto/pitkäveto'
   }, {
     nimi: 'Tulosveto',
-    url: '/vedot/pelimuoto/tulosveto'
+    url: '/pelimuoto/tulosveto'
   }, {
     nimi: 'Moniveto',
-    url: '/vedot/pelimuoto/moniveto'
+    url: '/pelimuoto/moniveto'
   }];
 
   // Oleutksena kaikki

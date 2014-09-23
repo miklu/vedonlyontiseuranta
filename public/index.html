@@ -27,7 +27,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <h2 data-bind="text: Navigaatio.valittuKategoria().nimi"></h2>
+            <h2>Näytetään tilastot: <span data-bind="text: Tilastot.kategoria().nimi"></span></h2>
           </div>
         </div>
       </div>
@@ -39,7 +39,11 @@
 
   <!-- scriptit -->
   <script src="scripts/knockout.debug.js"></script>
+  <script>
+    var shouter = new ko.subscribable();
+  </script>
   <script src="scripts/Navigaatio.js"></script>
+  <script src="scripts/Tilastot.js"></script>
   <script src="scripts/app.js"></script>
 </body>
 </html>
