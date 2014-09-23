@@ -10,5 +10,4 @@ var Tilastot = function() {
     console.log('Tilastojen nimi:' + newValue.nimi);
     console.log('Tilastojen url:' + newValue.url);
   });
-  console.log('Haetaan tilastot osoitteesta: ' + self.kategoria().url);
 };
