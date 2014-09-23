@@ -38,9 +38,12 @@ var Lomake = function() {
       var tuplat = kombinaatiot(ko.toJS(self.lisatytKohteet()), 2);
 
       systeemi.vedot = [];
+      systeemi.panos = 0;
+      systeemi.voitto = 0;
 
       for(var i = 0; i < tuplat.length; i++) {
         var veto = {};
+        systeemi.panos += parseFloat(self.tuplat());
         veto.kohteet = [];
         var kerroin = 1;
         for(var j=0; j < tuplat[i].length; j++) {
@@ -50,8 +53,10 @@ var Lomake = function() {
         }
         // Tässä määritellään vedon kerroin, kohteet sekä muut ominaisuudet
         veto.kerroin = kerroin;
+        veto.panos = parseFloat(self.tuplat());
         systeemi.vedot.push(veto);
       }
+      self.tallennettavaVeto(systeemi);
       console.log(systeemi);
     }
   };
