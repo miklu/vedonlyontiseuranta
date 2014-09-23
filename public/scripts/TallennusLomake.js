@@ -23,17 +23,57 @@ var TallennusLomake = function() {
 
   self.kohteet = ko.observableArray([new Kohde()]);
 
+  self.tuplat = ko.observable();
+  self.triplat = ko.observable();
+
   self.tallenna = function() {
-    console.log(self.booker());
-    console.log(self.pelimuoto());
-    console.log(self.panos());
-    console.log(self.kerroin());
-    console.log(self.voitto());
-    console.log(self.kohteet());
+    console.log('Tallennusmetodia kutsuttu');
+    if(self.tuplat()) {
+      console.log('Tuplat');
+      var vedot = kombinaatiot(ko.toJS(self.kohteet), 2);
+      console.log(vedot);
+    }
   };
 
   self.lisaaKohde = function() {
     self.kohteet.push(new Kohde());
-  }
+  };
+
+  self.poistaKohde = function() {
+    self.kohteet.pop();
+  };
 };
+
+// Kombinaatio
+function kombinaatiot(set, k) {
+  var i, j, combs, head, tailcombs;
+  
+  if (k > set.length || k <= 0) {
+    return [];
+  }
+  
+  if (k == set.length) {
+    return [set];
+  }
+  
+  if (k == 1) {
+    combs = [];
+    for (i = 0; i < set.length; i++) {
+      combs.push([set[i]]);
+    }
+    return combs;
+  }
+  
+  // Assert {1 < k < set.length}
+  
+  combs = [];
+  for (i = 0; i < set.length - k + 1; i++) {
+    head = set.slice(i, i+1);
+    tailcombs = kombinaatiot(set.slice(i + 1), k - 1);
+    for (j = 0; j < tailcombs.length; j++) {
+      combs.push(head.concat(tailcombs[j]));
+    }
+  }
+  return combs;
+}
 

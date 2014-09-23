@@ -4,123 +4,14 @@
   <meta charset="utf-8">
   <title>Vedonlyöntiseuranta</title>
   <link rel="stylesheet" href="styles/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-  <!-- SIVU ALKAA -->
-  <!-- CONTAINER -->
-  <div class="container-fluid">
-    <div class="row">
-      <!-- VEDON LISÄYS SARAKE -->
-      <div class="col-md-4">
-        <div class="row">
-          <div class="col-md-6">
-            <!-- BOOKER -->
-            <div class="form-group">
-              <label>Booker</label>
-              <select class="form-control" data-bind="options: bookers, value: booker">
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <!-- PELIMUOTO -->
-            <div class="form-group">
-              <label>Pelimuoto</label>
-              <select class="form-control" data-bind="options: pelimuodot, value: pelimuoto">
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <!-- TOINEN RIVI -->
-        <div class="row">
-          <!-- PANOS -->
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Panos</label>
-              <input type="text" class="form-control" 
-              placeholder="Panos" data-bind="value: panos">
-            </div>
-          </div>
-          <!-- KERROIN -->
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Kerroin</label>
-              <input type="text" class="form-control" 
-              placeholder="Kerroin" data-bind="value: kerroin">
-            </div>
-          </div>
-          <!-- VOITTO -->
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Voitto</label>
-              <input type="text" class="form-control" 
-              placeholder="Voitto" data-bind="value: voitto">
-            </div>
-          </div>
-        </div>
-        <!-- VEDON TIEDOT LOPPUU -->
-        <!-- KOHTEET -->
-        <div data-bind="foreach: kohteet">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Liiga</label>
-                <input type="text" class="form-control" data-bind="value: liiga">
-              </div>
-            </div>
-            <div class="col-md-5">
-              <div class="form-group">
-                <label>Ottelu</label>
-                <input type="text" class="form-control" data-bind="value: ottelu">
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <label>Tyyppi</label>
-                <select class="form-control" data-bind="options: $parent.tyypit, value: tyyppi">
-                </select>
-              </div>
-            </div>
-          </div>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="form-group">
-              <label>Veikkaus</label>
-              <input type="text" data-bind="value: veikkaus" class="form-control">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label>Kerroin</label>
-              <input type="text" data-bind="value: kerroin" class="form-control">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label>Tulos</label>
-              <input type="text" data-bind="value: tulos" class="form-control">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label>Osuma</label>
-              <select class="form-control" data-bind="options: $parent.osumaOptions, value: osuma"></select>
-            </div>
-          </div>
-        </div>
-        </div>
-        <button data-bind="click: lisaaKohde">Lisää kohde</button>
-        <button data-bind="click: tallenna">Tallenna</button>
-      </div>
-    </div>
-  </div>
-  <!-- CONTAINER LOPPUU -->
-  <!-- SIVU LOPPUU -->
-
+  
+  
+  
   <!-- SCRIPTIT -->
   <script src="scripts/knockout.debug.js"></script>
-  <script src="scripts/models.js"></script>
-  <script src="scripts/TallennusLomake.js"></script>
   <script src="scripts/app.js"></script>
 </body>
 </html>
