@@ -16,10 +16,12 @@ var Lomake = function() {
     console.log(self.valittuBooker());
   };
   self.lisaaKohde = function() {
-    self.lisatytKohteet.push({
-      ottelu: self.ottelu()
-    });
-    self.ottelu('');
-    console.log(self.lisatytKohteet().length);
+    if(self.ottelu()) {
+      self.lisatytKohteet.push({
+        ottelu: self.ottelu()
+      });
+      self.ottelu('');
+      console.log(self.lisatytKohteet().length);
+    }
   };
 };
