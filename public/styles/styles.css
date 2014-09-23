@@ -56,3 +56,10 @@ body {
     margin-right: 0;
   }
 }
+/***********************************************
+  SIDEBAR STYLES
+***********************************************/
+.sidebar-nav {
+  list-style: none;
+  margin-top: 20px;
+}
