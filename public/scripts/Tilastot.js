@@ -4,10 +4,13 @@ var Tilastot = function() {
   shouter.subscribe(function(newValue) {
     // Jos tyhjä näytetään overall-tilastot
     if(!newValue.url) {
-      newValue.url = '/tilastot';
+      self.kategoria().nimi = 'Kaikki';
+      self.kategoria().url = '/tilastot';
     }
-    self.kategoria(newValue);
-    console.log('Tilastojen nimi:' + newValue.nimi);
-    console.log('Tilastojen url:' + newValue.url);
+    else {
+      self.kategoria(newValue);
+    }
+    console.log('Tilastojen nimi:' + self.kategoria().nimi);
+    console.log('Tilastojen url:' + self.kategoria().url);
   });
 };
