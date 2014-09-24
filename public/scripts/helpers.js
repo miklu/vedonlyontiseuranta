@@ -1,6 +1,3 @@
-var shouter = new ko.subscribable();
-var tallennus = new ko.subscribable();
-
 // Kombinaatio
 function kombinaatiot(set, k) {
   var i, j, combs, head, tailcombs;

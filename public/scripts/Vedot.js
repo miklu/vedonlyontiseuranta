@@ -20,7 +20,7 @@ var Vedot = function() {
   {
     panos: 2,
     booker: 'Nordicbet',
-    pelimuoto: 'Järjestelmä',
+    pelimuoto: 'Pitkäveto',
     voitto: 0,
     pvm: '22.3.2014',
     vedot: [{

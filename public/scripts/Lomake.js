@@ -1,3 +1,5 @@
+var tallennus = new ko.subscribable();
+
 var Systeemi = function(booker, pelimuoto) {
   this.booker = booker;
   this.pelimuoto = pelimuoto;
@@ -70,8 +72,7 @@ var Lomake = function() {
   self.tallenna = function() {
     for(var i = 0; i < self.systeemit().length; i++) {
       if(self.systeemit()[i].panos) {
-        self.valittuPelimuoto('Järjestelmä');
-        self.luoSysteemi(i+1, true);
+        self.luoSysteemi(i+1);
       }
     }
     self.lisatytKohteet([]);

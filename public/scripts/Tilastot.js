@@ -1,3 +1,6 @@
+var shouter = new ko.subscribable();
+
+
 var Tilastot = function() {
   var self = this;
   self.kategoria = ko.observable({nimi: 'Kaikki', url: '/tilastot'});
