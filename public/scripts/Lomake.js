@@ -10,6 +10,8 @@ var Lomake = function() {
   var self = this;
   self.bookers = ['Veikkaus', 'Nordicbet', 'Bet365', 'Unibet', 'PAF'];
   self.valittuBooker = ko.observable();
+  self.osumat = ['Kyllä', 'Ei', 'Push'];
+  self.valittuOsuma = ko.observable();
   self.pelimuodot = ['Pitkäveto', 'Järjestelmä', 'Tulosveto', 'Voittajaveto', 'Moniveto'];
   self.valittuPelimuoto = ko.observable();
   self.isSelected = ko.observable(true);
@@ -54,14 +56,26 @@ var Lomake = function() {
       systeemi.panos += parseFloat(self.systeemit()[num-1].panos);
       veto.kohteet = [];
       var kerroin = 1;
+
+      var osuikoVeto = true;
+
       for(var j=0; j < tuplat[i].length; j++) {
         kerroin *= tuplat[i][j].kerroin;
-        // luodaan kohde
+        if(tuplat[i][j].osuma === 'Ei') {
+          osuikoVeto = false;
+        }
         veto.kohteet.push({ottelu: tuplat[i][j].ottelu, kerroin: tuplat[i][j].kerroin});
       }
       // Tässä määritellään vedon kerroin, kohteet sekä muut ominaisuudet
       veto.kerroin = kerroin;
       veto.panos = parseFloat(self.systeemit()[num-1].panos);
+      if(osuikoVeto) {
+        veto.voitto = veto.panos * veto.kerroin;
+        systeemi.voitto += veto.voitto;
+      }
+      else {
+        veto.voitto = 0;
+      }
       systeemi.vedot.push(veto);
     }
     self.tallennettavaVeto(systeemi);
@@ -83,7 +97,8 @@ var Lomake = function() {
       self.isSelected(false);
       self.lisatytKohteet.push({
         ottelu: self.ottelu(),
-        kerroin: self.kerroin()
+        kerroin: self.kerroin(),
+        osuma: self.valittuOsuma()
       });
       self.ottelu('');
       self.isSelected(true);

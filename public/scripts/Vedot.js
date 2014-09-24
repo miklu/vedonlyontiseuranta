@@ -13,7 +13,8 @@ var Vedot = function() {
       kerroin: 10.87,
       panos: 3,
       kohteet: [{
-        ottelu: 'Broncos-Seattle'
+        ottelu: 'Broncos-Seattle',
+        osuma: false
       }]
     }]
   },
