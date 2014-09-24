@@ -74,6 +74,7 @@
               <ul data-bind="foreach: vedot">
                 <li>Kerroin:<span data-bind="text: kerroin"></span></li>
                 <li>Panos:<span data-bind="text: panos"></span></li>
+                <li>Voitto:<span data-bind="text: voitto"></span></li>
                 <div data-bind="foreach: kohteet">
                   <p data-bind="text: ottelu"></p>
                 </div>
@@ -102,9 +103,13 @@
                   <input type="text" class="form-control input-sm" data-bind="value: Lomake.kerroin">
                 </div>
                 <div class="form-group col-md-12">
+                  <label>Osuiko</label>
+                  <select class="form-control input-sm" data-bind="options: Lomake.osumat, value: Lomake.valittuOsuma"></select>
+                </div>
+                <!-- <div class="form-group col-md-12">
                   <label>Voitto</label>
                   <input type="text" class="form-control input-sm" data-bind="value: Lomake.voitto">
-                </div>
+                </div> -->
               </fieldset>
               <button data-bind="click: Lomake.lisaaKohde">Lisää kohde</button>
             </form>
