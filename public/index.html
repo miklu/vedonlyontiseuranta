@@ -10,134 +10,138 @@
 </head>
 <body>
   
-  <!-- wrapper -->
-  <div id="wrapper">
-    <!-- sidebar -->
+  <div id="page-wrapper">
     <div id="sidebar-wrapper">
-      <!-- linkit viewmodelista -->
-      <ul class="sidebar-nav" data-bind="foreach: Navigaatio.kategoriat">
+      <!-- sivupalkki -->
+      <!-- sivupalkin otsikko -->
+      <a href="#">
+        <strong>Bet</strong>Buddy
+        <span class="menu-icon"><strong>1X2</strong></span>
+      </a>
+      <ul class="sidebar" data-bind="foreach: Navigaatio.kategoriat">
+        <!-- linkit -->
         <li>
           <a href="#" data-bind="text: nimi, click: $root.Navigaatio.valitseKategoria"></a>
         </li>
       </ul>
     </div>
-    <!-- /#sidebar -->
-    
+    <!-- sivupalkki loppu -->
+
     <!-- content -->
     <div id="content-wrapper">
-      <div class="container-fluid">
-        <div class="row">
-          <!-- tilastot title -->
-          <div class="col-md-12">
-            <h4>Tilastot: <span data-bind="text: Tilastot.kategoria().nimi"></span></h4>
-          </div>
+      <!-- tilastot -->
+      <div class="tilastopalkki">
+        <div class="col-md-12 tac">
+          <h4>Tilastot</h4>
         </div>
-        <div class="row">
-          <!-- tilastot data -->
-          <div class="col-md-2">Tilasto</div>
-          <div class="col-md-2">Tilasto</div>
-          <div class="col-md-2">Tilasto</div>
-          <div class="col-md-2">Tilasto</div>
-          <div class="col-md-2">Tilasto</div>
-          <div class="col-md-2">Tilasto</div>
-        </div>
+        <div class="col-md-2">0.00</div>
+        <div class="col-md-2">0.00</div>
+        <div class="col-md-2">0.00</div>
+        <div class="col-md-2">0.00</div>
+        <div class="col-md-2">0.00</div>
+        <div class="col-md-2">0.00</div>
+      </div>
+      <!-- /tilastopalkki loppu -->
 
-        <div class="row">
-          <!-- viimeisimmät vedot -->
-          <div class="col-md-3">
-            <h4>Viimeisimmät vedot</h4>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Booker</th>
-                  <th>Pelimuoto</th>
-                  <th>Panos</th>
-                  <th>Voitto</th>
-                </tr>
-              </thead>
-              <tbody data-bind="foreach: Vedot.systeemit">
-                <tr data-bind="click: $root.Vedot.valitseVeto">
-                  <td data-bind="text: booker"></td>
-                  <td><span data-bind="text: pelimuoto"></span> <div class="inline ilmoitus" data-bind="visible: vedot.length > 1"> <span data-bind="text: vedot.length"></span></div></td>
-                  <td data-bind="text: panos"></td>
-                  <td data-bind="text: voitto"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!-- vedon/systeemin tiedot -->
-          <div class="col-md-3">
-            <h4>Vedon tiedot</h4>
-            <div data-bind="foreach: Vedot.valittuSysteemi">
-              <p>Booker: <span data-bind="text: booker"></span></p>
-              <p>Pelimuoto: <span data-bind="text: pelimuoto"></span></p>
-              <ul data-bind="foreach: vedot">
-                <li>Kerroin:<span data-bind="text: kerroin"></span></li>
-                <li>Panos:<span data-bind="text: panos"></span></li>
-                <li>Voitto:<span data-bind="text: voitto"></span></li>
-                <div data-bind="foreach: kohteet">
-                  <p data-bind="text: ottelu"></p>
-                </div>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <!-- tallennus lomake -->
-            <form class="form-horizontal">
-              <fieldset>
-                <legend>Lomake</legend>
-                <div class="form-group col-md-6">
-                  <label>Booker</label>
-                  <select class="form-control input-sm" data-bind="options: Lomake.bookers, value: Lomake.valittuBooker"></select>
-                </div>
-                <div class="form-group col-md-6 right">
-                  <label>Pelimuoto</label>
-                  <select class="form-control input-sm" data-bind="options: Lomake.pelimuodot, value: Lomake.valittuPelimuoto"></select>
-                </div>
-                <div class="form-group col-md-12">
-                  <label>Ottelu</label>
-                  <input type="text" class="form-control input-sm" data-bind="value: Lomake.ottelu, hasFocus: Lomake.isSelected">
-                </div>
-                <div class="form-group col-md-12">
-                  <label>Kerroin</label>
-                  <input type="text" class="form-control input-sm" data-bind="value: Lomake.kerroin">
-                </div>
-                <div class="form-group col-md-12">
-                  <label>Osuiko</label>
-                  <select class="form-control input-sm" data-bind="options: Lomake.osumat, value: Lomake.valittuOsuma"></select>
-                </div>
-              </fieldset>
-              <button data-bind="click: Lomake.lisaaKohde">Lisää kohde</button>
-            </form>
-          </div>
-          <div class="col-md-3">
-            <h4>Varmistus</h4>
-            <p data-bind="text: Lomake.valittuBooker"></p>
-            <p data-bind="text: Lomake.valittuPelimuoto"></p>
-            <div data-bind="foreach: Lomake.lisatytKohteet">
+      <!-- viimeisimmät vedot -->
+      <div class="col-md-3">
+        <h4>Viimeisimmät vedot</h4>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Booker</th>
+              <th>Pelimuoto</th>
+              <th>Panos</th>
+              <th>Voitto</th>
+            </tr>
+          </thead>
+          <tbody data-bind="foreach: Vedot.systeemit">
+            <tr data-bind="click: $root.Vedot.valitseVeto">
+              <td data-bind="text: booker"></td>
+              <td><span data-bind="text: pelimuoto"></span> <div class="inline ilmoitus" data-bind="visible: vedot.length > 1"> <span data-bind="text: vedot.length"></span></div></td>
+              <td data-bind="text: panos"></td>
+              <td data-bind="text: voitto"></td>
+            </tr>
+          </tbody>
+          </table>
+      </div>
+      <!-- /viimeisimmät vedot loppu -->
+
+      <!-- vedon tiedot -->
+      <div class="col-md-3">
+        <h4>Vedon tiedot</h4>
+        <div data-bind="foreach: Vedot.valittuSysteemi">
+        <div data-bind="foreach: vedot">
+          <div class="col-md-12">
+            <div class="col-md-4" data-bind="text: panos"></div>
+            <div class="col-md-4" data-bind="text: kerroin"></div>
+            <div class="col-md-4" data-bind="text: voitto"></div>
+            <div data-bind="foreach: kohteet">
               <p data-bind="text: ottelu"></p>
             </div>
-            <!-- varmistus lomake -->
-            <form class="form-horizontal">
-              <div data-bind="foreach: Lomake.systeemit">
-                <div class="form-group" data-bind="visible: $parent.Lomake.lisatytKohteet().length > $index()">
-                  <label class="col-sm-4 control-label" data-bind="text: nimi"></label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control input-sm" data-bind="value: $data.panos">
-                  </div>
-                </div>
-              </div>
-            </form>
-            <button data-bind="click: Lomake.tallenna">Tallenna</button>
           </div>
         </div>
-
+        </div>
       </div>
-    </div>
-    <!-- content-wrapper -->
+      
+      <!-- tallennus lomake -->
+      <div class="col-md-3">
+        <form class="form-horizontal">
+          <fieldset>
+            <legend>Lomake</legend>
+            <div class="form-group col-md-6">
+              <label>Booker</label>
+              <select class="form-control input-sm" data-bind="options: Lomake.bookers, value: Lomake.valittuBooker"></select>
+            </div>
+            <div class="form-group col-md-6 right">
+              <label>Pelimuoto</label>
+              <select class="form-control input-sm" data-bind="options: Lomake.pelimuodot, value: Lomake.valittuPelimuoto"></select>
+            </div>
+            <div class="form-group col-md-12">
+              <label>Ottelu</label>
+              <input type="text" class="form-control input-sm" data-bind="value: Lomake.ottelu, hasFocus: Lomake.isSelected">
+            </div>
+            <div class="form-group col-md-12">
+              <label>Kerroin</label>
+              <input type="text" class="form-control input-sm" data-bind="value: Lomake.kerroin">
+            </div>
+            <div class="form-group col-md-12">
+              <label>Osuiko</label>
+              <select class="form-control input-sm" data-bind="options: Lomake.osumat, value: Lomake.valittuOsuma"></select>
+            </div>
+          </fieldset>
+          <button data-bind="click: Lomake.lisaaKohde">Lisää kohde</button>
+        </form>
+      </div>
+      <!-- /tallennus lomake loppu -->
+
+      <!-- varmistus lomake -->
+      <div class="col-md-3">
+        <h4>Varmistus</h4>
+        <p data-bind="text: Lomake.valittuBooker"></p>
+        <p data-bind="text: Lomake.valittuPelimuoto"></p>
+        <div data-bind="foreach: Lomake.lisatytKohteet">
+          <p data-bind="text: ottelu"></p>
+        </div>
+        <form class="form-horizontal">
+          <div data-bind="foreach: Lomake.systeemit">
+            <div class="form-group" data-bind="visible: $parent.Lomake.lisatytKohteet().length > $index()">
+              <label class="col-sm-4 control-label" data-bind="text: nimi"></label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control input-sm" data-bind="value: $data.panos">
+              </div>
+            </div>
+          </div>
+        </form>
+        <button data-bind="click: Lomake.tallenna">Tallenna</button>
+      </div>
+      <!-- /varmistus lomake loppu -->
+
 
   </div>
-  <!-- /#wrapper -->
+  <!-- /#content-wrapper -->
+  </div>
+  <!-- /#page-content-wrapper -->
 
   <!-- scriptit -->
   <script src="scripts/knockout.debug.js"></script>

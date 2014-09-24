@@ -1,98 +1,70 @@
 @sidebar-width: 180px;
-@aqua: #7FDBFF;
+
+@turkoosi: #3dbbd8;
+@tumma: #273337;
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   background: #f3f3f3;
   font-family: Lato, 'Open Sans';
   font-size: 14px;
+  margin: 0;
+  padding: 0;
 }
 
-.tac {
-  text-align: center;
-}
-.right {
-  float: right;
+.tac {text-align: center; }
+.right {float: right; }
+.inline {display: inline; }
+.testi {background: #eee;}
+
+.sidebar {
+  padding: 0;
+  margin: 20px;
+  .sidebar-list {
+    a {
+      display: block;
+      line-height: 1.6em;
+      color: #ccc;
+    }
+  }
 }
 
-.inline {
-  display: inline;
-}
-
-.ilmoitus {
-  border-radius: 4px;
-  background: #aaa;
-  color: #fff;font-weight: bold;
-  padding: 2px;
-  font-size: 12px;
-  text-align: center;
+.tilastopalkki {
+  background: @turkoosi;
+  color: #fff;
+  overflow: hidden;
 }
 /***********************************************
   WRAPPERS
 ***********************************************/
-#wrapper {
-  padding-left: 0;
-  transtion: all 0.5s ease;
-  .toggled {
-    padding-left: @sidebar-width;
-    #content-wrapper {
-      position: absolute;
-      margin-right: -@sidebar-width;
-    }
-    #sidebar-wrapper {
-      width: @sidebar-width;
-    }
-  }
+#page-wrapper {
+  padding-left: @sidebar-width;
+  height: 100%;
+  transition: all 0.5s ease;
 }
 
 #sidebar-wrapper {
   z-index: 1000;
   position: fixed;
   left: @sidebar-width;
-  width: 0px;
   height: 100%;
   margin-left: -@sidebar-width;
   overflow-y: auto;
-  background: #eee;
-  transtion: all 0.5s ease;
+  background: @tumma;
+  transition: all 0.5s ease;
+  width: @sidebar-width;
 }
 
 #content-wrapper {
   width: 100%;
-  padding: 15px;
-}
-
- @media(min-width:768px) {
-  #wrapper {
-    padding-left: @sidebar-width;
-  }
-
-  #wrapper.toggled {
-    padding-left: 0;
-  }
-
-  #sidebar-wrapper {
-    width: @sidebar-width;
-  }
-
-  #wrapper.toggled #sidebar-wrapper {
-    width: 0;
-  }
-
-  #page-content-wrapper {
-    padding: 20px;
-  }
-
-  #wrapper.toggled #page-content-wrapper {
-    position: relative;
-    margin-right: 0;
-  }
-}
-
-/***********************************************
-  SIDEBAR STYLES
-***********************************************/
-.sidebar-nav {
-  list-style: none;
-  margin-top: 20px;
+  padding: 0px;
+  margin: 0;
 }
 
 

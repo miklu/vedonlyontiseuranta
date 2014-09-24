@@ -12,6 +12,7 @@ var Vedot = function() {
     vedot: [{
       kerroin: 10.87,
       panos: 3,
+      voitto: 0,
       kohteet: [{
         ottelu: 'Broncos-Seattle',
         osuma: false
@@ -27,6 +28,7 @@ var Vedot = function() {
     vedot: [{
       kerroin: 10.87,
       panos: 3,
+      voitto: 0,
       kohteet: [
       {ottelu: 'A'},
       {ottelu: 'B'}
@@ -35,6 +37,7 @@ var Vedot = function() {
     {
       kerroin: 10.87,
       panos: 3,
+      voitto: 0,
       kohteet: [
       {ottelu: 'A'},
       {ottelu: 'C'}
@@ -43,6 +46,7 @@ var Vedot = function() {
     {
       kerroin: 10.87,
       panos: 3,
+      voitto: 0,
       kohteet: [
       {ottelu: 'B'},
       {ottelu: 'C'}
